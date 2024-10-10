@@ -1,6 +1,16 @@
+import Checkbox from '@/components/form/input/checkbox/Checkbox';
 import Image from 'next/image';
 
 export default function Home() {
+  return (
+    <>
+      <main className="flex flex-row items-center justify-items-center min-h-screen p-8 bg-cyan-300">
+        <div className="bg-slate-600">Foto</div>
+        <div className="bg-red-400"> Texto</div>
+      </main>
+    </>
+  );
+
   return (
     <>
       <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
