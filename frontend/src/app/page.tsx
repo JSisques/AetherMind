@@ -1,5 +1,7 @@
 import Checkbox from '@/components/form/input/checkbox/Checkbox';
+import CustomInput from '@/components/form/input/customInput/CustomInput';
 import Image from 'next/image';
+import { FaCircleInfo, FaXmark } from 'react-icons/fa6';
 
 export default function Home() {
   return (
@@ -7,6 +9,7 @@ export default function Home() {
       <main className="flex flex-row items-center justify-items-center min-h-screen p-8 bg-cyan-300">
         <div className="bg-slate-600">Foto</div>
         <div className="bg-red-400"> Texto</div>
+        <CustomInput id="1" icon={<FaCircleInfo />} />
       </main>
     </>
   );

@@ -2,7 +2,8 @@ import getCurrentYear from '@/util/timeManager';
 import Image from 'next/image';
 import React from 'react';
 
-import constants from '@/config/constants.json';
+import constants from '@/config/constants/constants.json';
+import routes from '@/config/constants/footerRoutes.json';
 
 const Footer = () => {
   return (
@@ -15,35 +16,23 @@ const Footer = () => {
               <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">{constants.portfolioName}</span>
             </a>
             <ul className="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-400">
-              <li>
-                <a href="#" className="hover:underline me-4 md:me-6">
-                  About
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:underline me-4 md:me-6">
-                  Privacy Policy
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:underline me-4 md:me-6">
-                  Licensing
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:underline">
-                  Contact
-                </a>
-              </li>
+              {routes.map(route => {
+                return (
+                  <li key={route.name}>
+                    <a href={route.path} className="hover:underline me-4 md:me-6">
+                      {route.name}
+                    </a>
+                  </li>
+                );
+              })}
             </ul>
           </div>
           <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
           <span className="block text-sm text-gray-500 sm:text-center dark:text-gray-400">
             © {getCurrentYear()}{' '}
-            <a href="https://flowbite.com/" className="hover:underline">
-              Flowbite™
+            <a href={constants.authorUrl} className="hover:underline">
+              Made with 🖤 by {constants.authorName}
             </a>
-            . All Rights Reserved.
           </span>
         </div>
       </footer>
