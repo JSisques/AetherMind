@@ -1,12 +1,12 @@
-import ProjectCard from "@/components/card/project/ProjectCard";
-import React from "react";
+import ProjectCard from '@/components/card/project/ProjectCard';
+import React from 'react';
 
-import projects from "@/config/constants/projects.json";
+import projects from '@/config/constants/projects.json';
 
 const Projects = () => {
   return (
     <main className="grid grid-cols-1 lg:grid-cols-[repeat(auto-fit,minmax(30rem,1fr))] xl:grid-cols-[repeat(auto-fit,minmax(40rem,1fr))] 2xl:grid-cols-[repeat(auto-fit,minmax(40rem,1fr))] gap-4 p-8">
-      {projects.map((project) => {
+      {projects.map(project => {
         return (
           <ProjectCard
             key={project.title}
