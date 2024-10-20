@@ -3,10 +3,13 @@ const mongoose = require('mongoose');
 // Definir el esquema de Mongoose
 const personalInformationSchema = new mongoose.Schema({
   name: { type: String, required: true },
+  profession: { type: String, required: true },
   nationality: { type: String, required: true },
   birthDate: { type: String, required: true },
   phone: { type: String, required: true },
   email: { type: String, required: true },
+  population: { type: String, required: true },
+  country: { type: String, required: true },
 });
 
 const jobSchema = new mongoose.Schema({

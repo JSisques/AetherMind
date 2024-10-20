@@ -2,12 +2,18 @@
 import React, { useEffect, useState } from 'react';
 
 interface Props {
-  color?: 'dark' | 'red' | 'green' | 'yellow' | 'indigo' | 'purple' | 'pink';
+  color?: 'dark' | 'red' | 'green' | 'yellow' | 'indigo' | 'purple' | 'pink' | 'blue' | 'orange' | 'teal' | 'cyan' | 'lime' | 'random';
   message: string;
 }
 
 const Badge = ({ color, message }: Props) => {
   const [style, setStyle] = useState<string>('bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300');
+
+  if (color === 'random') {
+    const validColors = ['dark', 'red', 'green', 'yellow', 'indigo', 'purple', 'pink', 'blue', 'orange', 'teal', 'cyan', 'lime'];
+    const randomColor = validColors[Math.floor(Math.random() * validColors.length)];
+    color = randomColor as 'dark' | 'red' | 'green' | 'yellow' | 'indigo' | 'purple' | 'pink' | 'blue' | 'orange' | 'teal' | 'cyan' | 'lime';
+  }
 
   useEffect(() => {
     switch (color) {
@@ -39,12 +45,32 @@ const Badge = ({ color, message }: Props) => {
         setStyle('bg-pink-100 text-pink-800 dark:bg-pink-900 dark:text-pink-300');
         break;
 
+      case 'blue':
+        setStyle('bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300');
+        break;
+
+      case 'orange':
+        setStyle('bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-300');
+        break;
+
+      case 'teal':
+        setStyle('bg-teal-100 text-teal-800 dark:bg-teal-900 dark:text-teal-300');
+        break;
+
+      case 'cyan':
+        setStyle('bg-cyan-100 text-cyan-800 dark:bg-cyan-900 dark:text-cyan-300');
+        break;
+
+      case 'lime':
+        setStyle('bg-lime-100 text-lime-800 dark:bg-lime-900 dark:text-lime-300');
+        break;
+
       default:
         break;
     }
   }, [color]);
 
-  return <span className={`text-xs font-medium me-2 px-2.5 py-0.5 rounded ${style}`}>Default</span>;
+  return <span className={`text-xs font-medium me-2 px-2.5 py-0.5 rounded ${style}`}>{message}</span>;
 };
 
 export default Badge;

@@ -8,8 +8,8 @@ import routes from '@/config/constants/footerRoutes.json';
 const Footer = () => {
   return (
     <>
-      <footer className="bg-white dark:bg-gray-900">
-        <div className="w-full p-8 mx-auto ">
+      <footer className=" bg-blue-700 dark:bg-blue-950">
+        <div className="w-full p-8 mx-auto">
           <div className="sm:flex sm:items-center sm:justify-between">
             <a href="https://flowbite.com/" className="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse">
               <img src="https://flowbite.com/docs/images/logo.svg" className="h-8" alt="Flowbite Logo" />
@@ -28,7 +28,7 @@ const Footer = () => {
             </ul>
           </div>
           <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
-          <span className="block text-sm text-gray-500 sm:text-center dark:text-gray-400">
+          <span className="block text-sm text-zinc-50 text-center dark:text-gray-400">
             © {getCurrentYear()}{' '}
             <a href={constants.authorUrl} className="hover:underline">
               Made with 🖤 by {constants.authorName}
