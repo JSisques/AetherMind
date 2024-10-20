@@ -3,7 +3,7 @@ require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 
-const swaggerMiddleware = require(`${__dirname}/src/config/swaggerConfig`);
+const swaggerMiddleware = require('./src/config/swaggerConfig');
 
 const app = express();
 
@@ -16,9 +16,13 @@ app.use(bodyParser.json());
 // Swagger
 swaggerMiddleware(app);
 
-// Constante para la ruta de la API
+// Constant for the API path
 const apiRootPath = process.env.API_PATH || '/api/v1';
 
 // Routes
+const projectRouter = require('./src/route/projectRouter');
+
+// Use routes
+app.use(apiRootPath, projectRouter);
 
 module.exports = app;

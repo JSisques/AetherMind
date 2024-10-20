@@ -4,35 +4,45 @@ const path = require('path');
 const fs = require('fs');
 const DailyRotateFile = require('winston-daily-rotate-file');
 
-// Crear el directorio 'logs' si no existe
+/**
+ * Configura y crea el directorio de logs si no existe.
+ */
 const logDirectory = path.join(__dirname, '../../logs');
 if (!fs.existsSync(logDirectory)) {
   fs.mkdirSync(logDirectory);
 }
 
-// Formato personalizado para los logs
+/**
+ * Define un formato personalizado para los mensajes de log.
+ * @param {Object} info - Objeto con información del log.
+ * @param {string} info.level - Nivel del log.
+ * @param {string} info.message - Mensaje del log.
+ * @param {string} info.timestamp - Marca de tiempo del log.
+ * @returns {string} Mensaje de log formateado.
+ */
 const customFormat = format.printf(({ level, message, timestamp }) => {
   return `${timestamp} [${level}]: ${message}`;
 });
 
-// Configuración de Winston
+/**
+ * Configura y crea una instancia del logger de Winston.
+ * @type {winston.Logger}
+ */
 const logger = winston.createLogger({
-  level: 'debug', // Nivel mínimo de logs que se registran
+  level: 'debug',
   format: format.combine(
     format.timestamp({
-      format: 'YYYY-MM-DD HH:mm:ss', // Formato de la fecha y hora en los logs
+      format: 'YYYY-MM-DD HH:mm:ss',
     }),
-    customFormat, // Aplicar formato personalizado
+    customFormat,
   ),
   transports: [
-    // Registrar logs en la consola
     new transports.Console(),
-    // Registrar logs en archivos con rotación diaria
     new DailyRotateFile({
       filename: path.join(logDirectory, '%DATE%.log'),
-      datePattern: 'YYYY-MM-DD', // Patrón de fecha en el nombre del archivo
-      maxSize: '5m', // Tamaño máximo del archivo de log antes de rotar
-      maxFiles: '30d', // Número máximo de días para mantener los archivos de log
+      datePattern: 'YYYY-MM-DD',
+      maxSize: '5m',
+      maxFiles: '30d',
     }),
   ],
 });

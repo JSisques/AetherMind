@@ -1,7 +1,11 @@
 require('dotenv').config();
 
 const app = require('./app');
-const logger = require(`${__dirname}/src/util/logger`);
+const logger = require('./src/util/logger');
+
+const connectToDatabase = require('./src/config/databaseConfig');
+
+connectToDatabase();
 
 const port = process.env.PORT || 4224;
 
