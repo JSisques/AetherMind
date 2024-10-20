@@ -21,8 +21,10 @@ const apiRootPath = process.env.API_PATH || '/api/v1';
 
 // Routes
 const projectRouter = require('./src/route/projectRouter');
+const curriculumRouter = require('./src/route/curriculumRouter');
 
 // Use routes
 app.use(apiRootPath, projectRouter);
+app.use(apiRootPath, curriculumRouter);
 
 module.exports = app;
